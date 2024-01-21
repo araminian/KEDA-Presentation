@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dbconsumer
+spec:
+  selector:
+    matchLabels:
+      app: dbconsumer
+  template:
+    metadata:
+      labels:
+        app: dbconsumer
+    spec:
+      containers:
+      - name: dbconsumer
+        image: nginx
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        env:
+        - name: db
+          value: mydb 

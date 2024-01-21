@@ -1,0 +1,11 @@
+PRODUCER json-output
+topic: messages
+key: mykeyq
+{
+    "Fname": "{{name.firstName}}",
+    "Lname": "{{name.lastName}}",
+    "Email": "{{internet.email}}"
+}
+
+###
+

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rdconsumer
+spec:
+  selector:
+    matchLabels:
+      app: rdconsumer
+  template:
+    metadata:
+      labels:
+        app: rdconsumer
+    spec:
+      containers:
+      - name: rdconsumer
+        image: rminz/redis-keda-consumer:v1
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"

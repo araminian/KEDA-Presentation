@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kfconsumer
+spec:
+  selector:
+    matchLabels:
+      app: kfconsumer
+  template:
+    metadata:
+      labels:
+        app: kfconsumer
+    spec:
+      containers:
+      - name: kfconsumer
+        image: rminz/kafka-keda-consumer:v1
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+

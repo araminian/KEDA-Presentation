@@ -1,0 +1,1 @@
+kbcli cluster create mysql db01

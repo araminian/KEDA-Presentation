@@ -1,0 +1,18 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: kfconsumer
+spec:
+  scaleTargetRef:
+    name: kfconsumer
+  pollingInterval: 10
+  cooldownPeriod: 30
+  triggers:
+  - type: kafka
+    metadata:
+      bootstrapServers: 192.168.194.157:9092
+      consumerGroup: keda1
+      lagThreshold: "5"
+      activationLagThreshold: '0'
+      offsetResetPolicy: latest
+      topic: messages

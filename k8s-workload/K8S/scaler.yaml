@@ -1,0 +1,14 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: webapp
+spec:
+  scaleTargetRef:
+    name: webapp
+  pollingInterval: 10
+  cooldownPeriod: 30
+  triggers:
+  - type: kubernetes-workload
+    metadata:
+      podSelector: 'app=rdconsumer'
+      value: '0.5'  #relation = (pods which match selector) / (scaled workload pods)

@@ -1,0 +1,51 @@
+---
+apiVersion: keda.sh/v1alpha1
+kind: TriggerAuthentication
+metadata:
+  name: keda-db01-auth
+spec:
+  secretTargetRef:
+  - parameter: username
+    name: db01-conn-credential
+    key: username
+  - parameter: password
+    name: db01-conn-credential
+    key: password
+  - parameter: port
+    name: db01-conn-credential
+    key: port
+  env:
+  - parameter: dbName
+    name: db
+    containerName: dbconsumer
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: dbconsumer
+spec:
+  scaleTargetRef:
+    name: dbconsumer
+  pollingInterval: 10
+  cooldownPeriod: 30
+  triggers:
+  - type: mysql
+    name: mysql
+    metadata:
+      queryValue: "5"
+      activationQueryValue: "0"
+      query: "SELECT Vistis FROM Vistis ORDER BY id DESC LIMIT 1;"
+      dbName: "mydb"
+      host: "192.168.194.175"
+    authenticationRef:
+      name: keda-db01-auth
+  # advanced:
+  #   scalingModifiers:
+  #     metricType: "Value"
+  #     formula: "(mysql)"
+  #     target: "21"
+
+# With Value, the target is compared directly to the returned 
+# metric from the API. With AverageValue,
+# the value returned from the custom metrics API
+# is divided by the number of Pods before being compared to the target.
