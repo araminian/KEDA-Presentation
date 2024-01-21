@@ -1,0 +1,14 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*,prometheus"
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+        step: 1m
+server:
+  port: 8081
+
+# curl http://localhost:8081/actuator/prometheus
