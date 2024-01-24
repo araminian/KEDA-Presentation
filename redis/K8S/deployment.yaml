@@ -18,3 +18,8 @@ spec:
           limits:
             memory: "128Mi"
             cpu: "500m"
+        env:
+        - name: REDIS_ADDR
+          value: 192.168.194.188:6379
+        - name: REDIS_PASSWORD
+          value: 7Za298bS4A

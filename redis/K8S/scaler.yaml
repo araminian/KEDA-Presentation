@@ -23,8 +23,8 @@ spec:
   triggers:
   - type: redis
     metadata:
-      address: 192.168.194.170:6379
+      address: 192.168.194.188:6379
       listName: usernames
-      listLength: "10"
+      listLength: "5"
     authenticationRef:
       name: redis-auth

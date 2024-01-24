@@ -20,8 +20,8 @@ func getEnv(key, fallback string) string {
 
 func main() {
 	// Replace these values with your Redis server information
-	redisAddr := getEnv("REDIS_ADDR", "192.168.194.170:6379")
-	redisPassword := getEnv("REDIS_PASSWORD", "V21D68b9qN")
+	redisAddr := getEnv("REDIS_ADDR", "192.168.194.188:6379")
+	redisPassword := getEnv("REDIS_PASSWORD", "7Za298bS4A")
 	redisDB := 0
 
 	numberOfUsers := 10

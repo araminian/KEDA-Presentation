@@ -11,4 +11,4 @@ spec:
   - type: kubernetes-workload
     metadata:
       podSelector: 'app=rdconsumer'
-      value: '0.5'  #relation = (pods which match selector) / (scaled workload pods)
+      value: '0.5'  #Number of pods = (matched pods) / (value)
