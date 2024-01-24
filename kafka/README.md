@@ -1,2 +1,2 @@
 ## Diagram
-![Diagram](Kafka.drawio.svg)
+![Diagram](kafka.drawio.svg)
