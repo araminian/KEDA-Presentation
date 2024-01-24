@@ -14,6 +14,7 @@ spec:
       containers:
       - name: kfconsumer
         image: rminz/kafka-keda-consumer:v1
+        command: ["/app/consumer", "-brokers", "192.168.194.173:9092"]
         resources:
           limits:
             memory: "128Mi"
